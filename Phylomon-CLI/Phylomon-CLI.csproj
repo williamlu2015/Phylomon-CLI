@@ -36,10 +36,26 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="controllers\GameController.cs" />
     <Compile Include="controllers\models\TurnActions.cs" />
+    <Compile Include="model\PickUpPile.cs" />
+    <Compile Include="model\Player.cs" />
+    <Compile Include="model\GameState.cs" />
+    <Compile Include="model\Board.cs" />
+    <Compile Include="model\Position.cs" />
+    <Compile Include="model\cards\HomeCard.cs" />
+    <Compile Include="model\cards\EventCard.cs" />
+    <Compile Include="model\cards\SpeciesCard.cs" />
+    <Compile Include="model\cards\Card.cs" />
+    <Compile Include="model\cards\Classification.cs" />
+    <Compile Include="model\cards\Climate.cs" />
+    <Compile Include="model\cards\Diet.cs" />
+    <Compile Include="model\cards\Terrain.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="controllers\" />
     <Folder Include="controllers\models\" />
+    <Folder Include="model\" />
+    <Folder Include="model\cards\" />
+    <Folder Include="model\cards\speciesCards\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
