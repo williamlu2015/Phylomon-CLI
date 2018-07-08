@@ -34,6 +34,12 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="controllers\GameController.cs" />
+    <Compile Include="controllers\models\TurnActions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="controllers\" />
+    <Folder Include="controllers\models\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
