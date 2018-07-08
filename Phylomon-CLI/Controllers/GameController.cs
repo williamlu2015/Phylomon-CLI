@@ -1,4 +1,5 @@
 ﻿using System;
+using PhylomonCLI.model;
 namespace PhylomonCLI
 {
     class GameController
@@ -6,17 +7,19 @@ namespace PhylomonCLI
         static GameController instance = null;
         private static int MAXIMUM_TURNS = 6;
 
-        String player1Name;
-        String player2Name;
+        public Board board;
+        string player1Name;
+        string player2Name;
         int turnCounter = 0;
 
-        private GameController(String player1, String player2)
+        private GameController(string player1, string player2)
         {
             this.player1Name = player1;
             this.player2Name = player2;
+            board = new Board();
         }
 
-        public static GameController GetInstance(String player1Name, String player2Name)
+        public static GameController GetInstance(string player1Name, string player2Name)
         {
             if (instance == null)
             {
@@ -26,6 +29,11 @@ namespace PhylomonCLI
             return instance;
         }
 
+        public static GameController GetInstance()
+        {
+            return GetInstance("defaultPlayer1", "defaultPlayer2");
+        }
+
         public void StartGame()
         {
             Console.WriteLine("Starting game between " + player1Name + " and " + player2Name);
@@ -33,13 +41,13 @@ namespace PhylomonCLI
         }
 
         // TODO: Use player object to start turn
-        void StartPlayerTurn(String player)
+        void StartPlayerTurn(string player)
         {
             Console.WriteLine("\nStarting turn for " + player);
             int actionCount = 0;
             while (actionCount < 3)
             {
-                String actionInput = Console.ReadLine();
+                string actionInput = Console.ReadLine();
                 ITurnAction action = HandleActionInput(actionInput);
                 if (action.AttemptExecute())
                 {
@@ -55,7 +63,7 @@ namespace PhylomonCLI
             NextTurn(player);
         }
 
-        private void NextTurn(String currentPlayer) 
+        private void NextTurn(string currentPlayer) 
         {
             if (turnCounter > MAXIMUM_TURNS) {
                 Console.WriteLine("\nMaximum turns played...ending game");
@@ -68,11 +76,11 @@ namespace PhylomonCLI
             }
         }
 
-        private ITurnAction HandleActionInput(String input)
+        private ITurnAction HandleActionInput(string input)
         {
-            String[] tokens = input.Split(new char[] { ' ' });
+            string[] tokens = input.Split(new char[] { ' ' });
             if (tokens.Length == 0) return new ActionUndefined();
-            String userAction = tokens[0].ToLower();
+            string userAction = tokens[0].ToLower();
             switch (userAction)
             {
                 case "play":
@@ -83,6 +91,8 @@ namespace PhylomonCLI
                     return new ActionDrop();
                 case "pass":
                     return new ActionPass();
+                case "inspect":
+                    return new ActionInspect(input);
                 default:
                     Console.WriteLine("No action matching " + userAction);
                     return new ActionUndefined();

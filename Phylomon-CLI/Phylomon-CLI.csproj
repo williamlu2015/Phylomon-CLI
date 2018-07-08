@@ -49,6 +49,8 @@
     <Compile Include="model\cards\Climate.cs" />
     <Compile Include="model\cards\Diet.cs" />
     <Compile Include="model\cards\Terrain.cs" />
+    <Compile Include="extensions\ListExtensions.cs" />
+    <Compile Include="extensions\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="controllers\" />
@@ -56,6 +58,7 @@
     <Folder Include="model\" />
     <Folder Include="model\cards\" />
     <Folder Include="model\cards\speciesCards\" />
+    <Folder Include="extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

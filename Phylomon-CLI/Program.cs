@@ -8,8 +8,8 @@ namespace PhylomonCLI {
                 Console.WriteLine("Usage: <player1Name: String> <player2Name: String>");
                 return;
             } else {
-                GameController mGameController = GameController.getInstance(args[0], args[1]);
-                mGameController.startGame();
+                GameController mGameController = GameController.GetInstance(args[0], args[1]);
+                mGameController.StartGame();
             }
         }
     }
