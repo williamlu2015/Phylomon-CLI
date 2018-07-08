@@ -16,7 +16,7 @@ namespace PhylomonCLI
             this.player2Name = player2;
         }
 
-        public static GameController getInstance(String player1Name, String player2Name)
+        public static GameController GetInstance(String player1Name, String player2Name)
         {
             if (instance == null)
             {
@@ -26,22 +26,22 @@ namespace PhylomonCLI
             return instance;
         }
 
-        public void startGame()
+        public void StartGame()
         {
             Console.WriteLine("Starting game between " + player1Name + " and " + player2Name);
-            startPlayerTurn(player1Name);
+            StartPlayerTurn(player1Name);
         }
 
         // TODO: Use player object to start turn
-        void startPlayerTurn(String player)
+        void StartPlayerTurn(String player)
         {
             Console.WriteLine("\nStarting turn for " + player);
             int actionCount = 0;
             while (actionCount < 3)
             {
                 String actionInput = Console.ReadLine();
-                TurnAction action = handleActionInput(actionInput);
-                if (action.attemptExecute())
+                ITurnAction action = HandleActionInput(actionInput);
+                if (action.AttemptExecute())
                 {
                     if (action is ActionPass)
                     {
@@ -52,23 +52,23 @@ namespace PhylomonCLI
             }
             Console.WriteLine("Completed turn for " + player);
             ++turnCounter;
-            switchTurns(player);
+            NextTurn(player);
         }
 
-        private void switchTurns(String currentPlayer) 
+        private void NextTurn(String currentPlayer) 
         {
             if (turnCounter > MAXIMUM_TURNS) {
                 Console.WriteLine("\nMaximum turns played...ending game");
                 return;
             }
             if (currentPlayer == player1Name) {
-                startPlayerTurn(player2Name);
+                StartPlayerTurn(player2Name);
             } else {
-                startPlayerTurn(player1Name);
+                StartPlayerTurn(player1Name);
             }
         }
 
-        private TurnAction handleActionInput(String input)
+        private ITurnAction HandleActionInput(String input)
         {
             String[] tokens = input.Split(new char[] { ' ' });
             if (tokens.Length == 0) return new ActionUndefined();

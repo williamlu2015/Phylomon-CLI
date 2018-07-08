@@ -1,50 +1,50 @@
 ﻿using System;
 namespace PhylomonCLI
 {
-    interface TurnAction
+    interface ITurnAction
     {
-        bool attemptExecute();
+        bool AttemptExecute();
     }
 
-    class ActionPlay : TurnAction
+    class ActionPlay : ITurnAction
     {
-        public bool attemptExecute()
+        public bool AttemptExecute()
         {
             Console.WriteLine("\tAttempting to execute action: Play");
             return true;
         }
     }
 
-    class ActionMove : TurnAction
+    class ActionMove : ITurnAction
     {
-        public bool attemptExecute()
+        public bool AttemptExecute()
         {
             Console.WriteLine("\tAttempting to execute action: Move");
             return true;
         }
     }
 
-    class ActionDrop : TurnAction
+    class ActionDrop : ITurnAction
     {
-        public bool attemptExecute()
+        public bool AttemptExecute()
         {
             Console.WriteLine("\tAttempting to execute action: Drop");
             return true;
         }
     }
 
-    class ActionPass : TurnAction
+    class ActionPass : ITurnAction
     {
-        public bool attemptExecute()
+        public bool AttemptExecute()
         {
             Console.WriteLine("\tAttempting to execute action: Pass");
             return true;
         }
     }
 
-    class ActionUndefined: TurnAction
+    class ActionUndefined: ITurnAction
     {
-        public bool attemptExecute()
+        public bool AttemptExecute()
         {
             return false;
         }
