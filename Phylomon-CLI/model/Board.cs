@@ -22,8 +22,6 @@ namespace PhylomonCLI.model {
         /// </returns>
         public string InspectPosition(Position position) 
         {
-            Card placeholder = new PlaceHolderCard();
-
             StringBuilder sb = new StringBuilder();
             const int CARD_WIDTH = 30;
             const int DESCRIPTION_WIDTH = CARD_WIDTH - 3;
@@ -40,16 +38,16 @@ namespace PhylomonCLI.model {
                 int middleIndex = position.X;
                 int rightIndex = position.X + 1;
                 int y = position.Y + dy;
-                Card left = cards.GetValueOrDefault(leftIndex, y, placeholder);
-                Card middle = cards.GetValueOrDefault(middleIndex, y, placeholder);
-                Card right = cards.GetValueOrDefault(rightIndex, y, placeholder);
+                Inspectable left = cards.GetValueOrDefault(leftIndex, y, new PlaceHolderCard(leftIndex, y));
+                Inspectable middle = cards.GetValueOrDefault(middleIndex, y, new PlaceHolderCard(middleIndex,y));
+                Inspectable right = cards.GetValueOrDefault(rightIndex, y, new PlaceHolderCard(rightIndex,y));
 
-                // iterate across 3 columns
-                for (int i = 0; i < 3; i++)
+                // iterate across 3 rows
+                for (int i = 0; i < 10; i++)
                 {
-                    sb.AppendLine("* " + left.Props(leftIndex, y)[i].padAndTruncate(' ', DESCRIPTION_WIDTH) + "*" +
-                                  "* " + middle.Props(middleIndex, y)[i].padAndTruncate(' ', DESCRIPTION_WIDTH)  + "*" +
-                                  "* " + right.Props(rightIndex, y)[i].padAndTruncate(' ', DESCRIPTION_WIDTH)  + "*");
+                    sb.AppendLine("* " + left.Properties()[i].truncateAndCenter(' ', DESCRIPTION_WIDTH) + "*" +
+                                  "* " + middle.Properties()[i].truncateAndCenter(' ', DESCRIPTION_WIDTH)  + "*" +
+                                  "* " + right.Properties()[i].truncateAndCenter(' ', DESCRIPTION_WIDTH)  + "*");
                 }
             }
             sb.AppendLine(horizontalDivider);

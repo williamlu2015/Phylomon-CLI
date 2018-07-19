@@ -23,5 +23,23 @@ namespace PhylomonCLI.extensions
             Position position = new Position(x, y);
             return dictionary.TryGetValue(position, out value) ? value : defaultCard;
         }
+
+        /// <summary>
+        /// Gets the value at a specified index in the list, or defaults to given value
+        /// </summary>
+        /// <returns>The value or default.</returns>
+        /// <param name="values">The receiver of the function.</param>
+        /// <param name="index">The index to retrieve at</param>
+        /// <param name="defaultValue">The value to return if index not valid</param>
+        /// <typeparam name="TValue">The type of the elements in the list</typeparam>
+        public static TValue GetValueOrDefault<TValue>
+        (this IList<TValue> values, int index, TValue defaultValue)
+        {
+            if (index < 0 || index >= values.Count) {
+                return defaultValue;
+            } else {
+                return values[index];
+            }
+        }
     }
 }

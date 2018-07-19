@@ -6,6 +6,7 @@ namespace PhylomonCLI
     {
         static GameController instance = null;
         private static int MAXIMUM_TURNS = 6;
+        private const String HELP = "Actions Available:\n\tPlay <No Functionality>\n\tMove <No Functionality>\n\tDrop <No Functionality>\n\tPass ends your turn\n\tInspect <X-POS> <Y-POS> displays the cards in the vicinity\n";
 
         public Board board;
         string player1Name;
@@ -95,6 +96,7 @@ namespace PhylomonCLI
                     return new ActionInspect(input);
                 default:
                     Console.WriteLine("No action matching " + userAction);
+                    Console.WriteLine(HELP);
                     return new ActionUndefined();
             }
         }
