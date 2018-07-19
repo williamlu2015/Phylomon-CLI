@@ -5,7 +5,6 @@ namespace PhylomonCLI
     {
         public static String truncateAndCenter
          (this String str,
-          char paddingChar,
           int length)
         {
             if (str.Length < length) {

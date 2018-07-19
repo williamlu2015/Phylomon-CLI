@@ -45,9 +45,9 @@ namespace PhylomonCLI.model {
                 // iterate across 3 rows
                 for (int i = 0; i < 10; i++)
                 {
-                    sb.AppendLine("* " + left.Properties()[i].truncateAndCenter(' ', DESCRIPTION_WIDTH) + "*" +
-                                  "* " + middle.Properties()[i].truncateAndCenter(' ', DESCRIPTION_WIDTH)  + "*" +
-                                  "* " + right.Properties()[i].truncateAndCenter(' ', DESCRIPTION_WIDTH)  + "*");
+                    sb.AppendLine("* " + left.Properties()[i].truncateAndCenter(DESCRIPTION_WIDTH) + "*" +
+                                  "* " + middle.Properties()[i].truncateAndCenter(DESCRIPTION_WIDTH)  + "*" +
+                                  "* " + right.Properties()[i].truncateAndCenter(DESCRIPTION_WIDTH)  + "*");
                 }
             }
             sb.AppendLine(horizontalDivider);
