@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using PhylomonCLI.extensions;
@@ -14,20 +15,20 @@ namespace PhylomonCLI.model.cards {
         public int FoodchainNumber;
         [JsonConverter(typeof(StringEnumConverter))]
         public Diet Diet;
-        // public Classification Classification { get; } TODO: Implement parser for Classication type
+        [JsonConverter(typeof(ClassicationConverter))]
+        public Classification Classification;
         [JsonConverter(typeof(HashSetEnumConverter<Terrain>))]
         public HashSet<Terrain> Terrain;
         [JsonConverter(typeof(HashSetEnumConverter<Climate>))]
         public HashSet<Climate> Climate;
 
-        // TODO: Generalize for all Card types, returning a specific type of card depending on type flag
         public static SpeciesCard parseWrappedFromString(string jsonString) 
         {
             JsonConverter[] converters = new JsonConverter[]{
                 new HashSetEnumConverter<Terrain>(),
-                new HashSetEnumConverter<Climate>()};
-            CardWrapper cardWrapper = JsonConvert.DeserializeObject<CardWrapper>(Examples.marbledMurreletWrapped, converters);
-            return (SpeciesCard) cardWrapper.Data;
+                new HashSetEnumConverter<Climate>()
+            };
+            return JsonConvert.DeserializeObject<SpeciesCard>(jsonString, converters);
         }
 
         public override List<string> Properties()
@@ -37,10 +38,11 @@ namespace PhylomonCLI.model.cards {
                 CommonName, 
                 LatinName, 
                 PointsValue.ToString(), 
-                CardText, 
+               // CardText, 
                 Scale.ToString(), 
                 FoodchainNumber.ToString(), 
                 Diet.ToString(),
+                Classification.ToString(),
                 Terrain.MakeString<Terrain>(),
                 Climate.MakeString<Climate>()
             };
@@ -76,15 +78,26 @@ namespace PhylomonCLI.model.cards {
 
     public class Classification
     {
-        public string Kingdom { get; }
-        public string Phylum { get; }
-        public string Class { get; }
+        public string Kingdom;
+        public string Phylum;
+        public string Class;
 
-        public Classification(string kingdom, string phylum, string _class)
+        public Classification(string kingdom, string phylum, string clazz)
         {
             Kingdom = kingdom;
             Phylum = phylum;
-            Class = _class;
+            Class = clazz;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Kingdom);
+            sb.Append(", ");
+            sb.Append(Phylum);
+            sb.Append(", ");
+            sb.Append(Class);
+            return sb.ToString();
         }
     }
 }

@@ -40,13 +40,6 @@ namespace PhylomonCLI.model
         abstract public List<string> Properties();
     }
 
-    class CardWrapper {
-        [JsonProperty("type")]
-        string CardType;
-        [JsonProperty("data")]
-        public SpeciesCard Data;
-    }
-
     class PlaceHolderCard : Card
     {
         private int x;

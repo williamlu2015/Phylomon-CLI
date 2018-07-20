@@ -15,7 +15,7 @@ namespace PhylomonCLI
             HashSet<T> items = new HashSet<T>();
             foreach (string token in tokens)
             {
-                items.Add((T)Enum.Parse(typeof(T), token, true));
+                items.Add((T)Enum.Parse(typeof(T), token.Trim(), true));
             }
             return items;
         }
@@ -26,7 +26,7 @@ namespace PhylomonCLI
             foreach (T property in value)
             {
                 sb.Append(property);
-                sb.Append(",");
+                sb.Append(", ");
             }
             writer.WriteValue(sb.Remove(sb.Length - 1, sb.Length).ToString());
         }
@@ -46,6 +46,37 @@ namespace PhylomonCLI
             {
                 return typeof(T) == typeof(Terrain)
                     || typeof(T) == typeof(Climate);
+            }
+        }
+    }
+
+    public class ClassicationConverter: JsonConverter<Classification> {
+        public override Classification ReadJson(JsonReader reader, Type objectType, Classification existingValue, bool hasExistingValue, JsonSerializer serializer)
+        {
+            string classificationString = (string) reader.Value;
+            string[] tokens = classificationString.Split(',');
+            return new Classification(tokens[0].Trim(), tokens[1].Trim(), tokens[2].Trim());
+        }
+
+        public override void WriteJson(JsonWriter writer, Classification value, JsonSerializer serializer)
+        {
+            
+            writer.WriteValue(value.ToString());
+        }
+
+        public override bool CanRead
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public override bool CanWrite
+        {
+            get
+            {
+                return true;
             }
         }
     }
