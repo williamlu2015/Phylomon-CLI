@@ -50,8 +50,8 @@
     <Compile Include="extensions\CollectionExtensions.cs" />
     <Compile Include="extensions\StringExtensions.cs" />
     <Compile Include="model\cards\species\SpeciesCard.cs" />
-    <Compile Include="SpeciesCards.cs" />
-    <Compile Include="CardJsonConverters.cs" />
+    <Compile Include="data\SpeciesCards.cs" />
+    <Compile Include="model\CardJsonConverters.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="controllers\" />
@@ -60,6 +60,7 @@
     <Folder Include="model\cards\" />
     <Folder Include="model\cards\species\" />
     <Folder Include="extensions\" />
+    <Folder Include="data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
