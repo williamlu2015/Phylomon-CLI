@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System;
 using PhylomonCLI.extensions;
+using PhylomonCLI.model.cards;
+using Newtonsoft.Json;
 
 namespace PhylomonCLI.model
 {
@@ -36,6 +38,13 @@ namespace PhylomonCLI.model
         }
 
         abstract public List<string> Properties();
+    }
+
+    class CardWrapper {
+        [JsonProperty("type")]
+        string CardType;
+        [JsonProperty("data")]
+        public SpeciesCard Data;
     }
 
     class PlaceHolderCard : Card

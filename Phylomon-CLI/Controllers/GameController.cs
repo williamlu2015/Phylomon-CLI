@@ -94,6 +94,8 @@ namespace PhylomonCLI
                     return new ActionPass();
                 case "inspect":
                     return new ActionInspect(input);
+                case "debug":
+                    return new ActionDebug();
                 default:
                     Console.WriteLine("No action matching " + userAction);
                     Console.WriteLine(HELP);

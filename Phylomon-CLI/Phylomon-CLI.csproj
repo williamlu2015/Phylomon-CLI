@@ -47,11 +47,11 @@
     <Compile Include="model\cards\HomeCard.cs" />
     <Compile Include="model\cards\EventCard.cs" />
     <Compile Include="model\cards\Card.cs" />
-    <Compile Include="extensions\ListExtensions.cs" />
+    <Compile Include="extensions\CollectionExtensions.cs" />
     <Compile Include="extensions\StringExtensions.cs" />
     <Compile Include="model\cards\species\SpeciesCard.cs" />
-    <Compile Include="model\cards\species\Classification.cs" />
     <Compile Include="SpeciesCards.cs" />
+    <Compile Include="CardJsonConverters.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="controllers\" />

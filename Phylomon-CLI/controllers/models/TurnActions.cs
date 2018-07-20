@@ -1,5 +1,6 @@
 ﻿using System;
 using PhylomonCLI.model;
+using PhylomonCLI.model.cards;
 namespace PhylomonCLI
 {
     interface ITurnAction
@@ -75,6 +76,18 @@ namespace PhylomonCLI
 
         private Position ConvertToPosition(string token1, string token2) {
             return new Position(Int32.Parse(token1), Int32.Parse(token2));
+        }
+    }
+
+    class ActionDebug : ITurnAction
+    {
+        public bool AttemptExecute()
+        {
+            // put all debug code here
+            SpeciesCard card = SpeciesCard.parseWrappedFromString(Examples.marbledMurreletWrapped);
+            card.Properties().ForEach((obj) => Console.WriteLine(obj));
+
+            return false;
         }
     }
 
