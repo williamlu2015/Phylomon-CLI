@@ -64,4 +64,7 @@
     'Terrain': 'FOREST, GRASSLAND, URBAN',
     'Climate': 'COLD, COOL, WARM, HOT'
     }";
+
+    public static string allSpecieCards = $@"[{marbledMurrelet}, {seaOtter}, {himilayanBlackberry}, {killerWhale}, {mycorrhizalFungi}]";
+
 }

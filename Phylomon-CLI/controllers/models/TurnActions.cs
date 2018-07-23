@@ -1,6 +1,7 @@
 ﻿using System;
 using PhylomonCLI.model;
 using PhylomonCLI.model.cards;
+using PhylomonCLI.providers;
 namespace PhylomonCLI
 {
     interface ITurnAction
@@ -84,23 +85,11 @@ namespace PhylomonCLI
         public bool AttemptExecute()
         {
             // put all debug code here
-            SpeciesCard card = SpeciesCard.parseWrappedFromString(Examples.marbledMurrelet);
-            card.Properties().ForEach((obj) => Console.WriteLine(obj));
-            Console.WriteLine();
-
-            SpeciesCard card1 = SpeciesCard.parseWrappedFromString(Examples.killerWhale);
-            card1.Properties().ForEach((obj) => Console.WriteLine(obj));
-            Console.WriteLine();
-
-
-            SpeciesCard card2 = SpeciesCard.parseWrappedFromString(Examples.seaOtter);
-            card2.Properties().ForEach((obj) => Console.WriteLine(obj));
-            Console.WriteLine();
-
-
-            SpeciesCard card3 = SpeciesCard.parseWrappedFromString(Examples.himilayanBlackberry);
-            card3.Properties().ForEach((obj) => Console.WriteLine(obj));
-            Console.WriteLine();
+            CardProvider cardProvider = CardProvider.GetInstance();
+            cardProvider.Cards.ForEach((obj) => {
+                Console.WriteLine(obj);
+                Console.WriteLine();
+            });
 
             return false;
         }

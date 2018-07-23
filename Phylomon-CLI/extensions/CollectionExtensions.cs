@@ -56,5 +56,19 @@ namespace PhylomonCLI.extensions
             sb.Length = sb.Length - seperator.Length;
             return sb.ToString();
         }
+
+        public static string MakeString<T>
+        (this IList<T> list,
+        string seperator = ", ") 
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (T property in list)
+            {
+                sb.Append(property);
+                sb.Append(seperator);
+            }
+            sb.Length = sb.Length - seperator.Length;
+            return sb.ToString();
+        }
     }
 }

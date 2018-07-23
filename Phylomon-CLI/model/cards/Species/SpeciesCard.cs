@@ -47,6 +47,11 @@ namespace PhylomonCLI.model.cards {
                 Climate.MakeString<Climate>()
             };
         }
+
+        public override string ToString()
+        {
+            return Properties().MakeString("\n");
+        }
     }
 
     public enum Diet
@@ -54,7 +59,8 @@ namespace PhylomonCLI.model.cards {
         AUTOTROPH,
         HERBIVORE,
         OMNIVORE,
-        CARNIVORE
+        CARNIVORE,
+        OTHER
     }
 
     public enum Terrain
