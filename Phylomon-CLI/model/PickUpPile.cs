@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
+using PhylomonCLI.model.cards;
 
 namespace PhylomonCLI.model {
     public class PickUpPile {
-        private List<Card> cards;
+        private Queue<Card> cards;
 
         public PickUpPile(List<Card> cards) {
-            this.cards = cards;
+            this.cards = new Queue<Card>(cards);
         }
 
         public Card PickUp() {
-            Card result = cards[cards.Count - 1];
-            cards.RemoveAt(cards.Count - 1);
-            return result;
+            return cards.Dequeue();
         }
 
         public bool IsEmpty() {

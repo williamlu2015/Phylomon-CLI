@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PhylomonCLI.model.cards;
 
 namespace PhylomonCLI.model {
     public class GameState {

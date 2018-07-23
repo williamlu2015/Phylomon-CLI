@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PhylomonCLI.model.cards;
 using PhylomonCLI.model;
 using System.Text;
 namespace PhylomonCLI.extensions

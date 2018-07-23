@@ -1,5 +1,7 @@
 ﻿public static class Examples
 {
+    public const string userDeck = @"['Brachyramphus marmoratus', 'Brachyramphus marmoratus', 'Enhydra lutris', 'Rubus ameniacus', 'Rubus ameniacus', 'Rubus ameniacus','Enhydra lutris', 'Enhydra lutris', 'Enhydra lutris']";
+
     public const string marbledMurrelet = @"{
     'CommonName': 'Marbled Murrelet',
     'LatinName': 'Brachyramphus marmoratus',
@@ -12,7 +14,7 @@
     'Terrain': 'FOREST, GRASSLAND, FRESHWATER',
     'Climate': 'COOL, WARM'
     }";
-    
+
     public const string seaOtter = @"{
     'CommonName': 'Sea Otter',
     'LatinName': 'Enhydra lutris',

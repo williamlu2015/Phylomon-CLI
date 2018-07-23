@@ -9,7 +9,8 @@ namespace PhylomonCLI
         /// <summary>
         /// Attempts to execute the given action
         /// </summary>
-        /// <returns><c>true</c>, if execute succeeded, <c>false</c> otherwise.</returns>
+        /// <returns><c>true</c>, if execute succeeded, <c>false</c> otherwise.
+        /// When an action succeeds, it counts towards the 3 moves total</returns>
         bool AttemptExecute();
     }
 
@@ -85,12 +86,29 @@ namespace PhylomonCLI
         public bool AttemptExecute()
         {
             // put all debug code here
-            CardProvider cardProvider = CardProvider.GetInstance();
-            cardProvider.Cards.ForEach((obj) => {
+          
+            CardProvider.GetDefaultCards().ForEach((obj) => {
                 Console.WriteLine(obj);
                 Console.WriteLine();
             });
 
+            return false;
+        }
+    }
+
+    class ActionShow: ITurnAction 
+    {
+        Player player;
+
+        public ActionShow(Player player) {
+            this.player = player;
+        }
+
+        public bool AttemptExecute()
+        {
+            foreach (String prop in player.CardsInHand()) {
+                Console.WriteLine(prop);
+            }
             return false;
         }
     }
