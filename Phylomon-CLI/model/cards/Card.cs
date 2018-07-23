@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System;
 using PhylomonCLI.extensions;
+using PhylomonCLI.model.cards;
+using Newtonsoft.Json;
 
-namespace PhylomonCLI.model
+namespace PhylomonCLI.model.cards
 {
 
     public interface Inspectable

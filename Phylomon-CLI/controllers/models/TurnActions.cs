@@ -1,5 +1,7 @@
 ﻿using System;
 using PhylomonCLI.model;
+using PhylomonCLI.model.cards;
+using PhylomonCLI.providers;
 namespace PhylomonCLI
 {
     interface ITurnAction
@@ -7,7 +9,8 @@ namespace PhylomonCLI
         /// <summary>
         /// Attempts to execute the given action
         /// </summary>
-        /// <returns><c>true</c>, if execute succeeded, <c>false</c> otherwise.</returns>
+        /// <returns><c>true</c>, if execute succeeded, <c>false</c> otherwise.
+        /// When an action succeeds, it counts towards the 3 moves total</returns>
         bool AttemptExecute();
     }
 
@@ -75,6 +78,38 @@ namespace PhylomonCLI
 
         private Position ConvertToPosition(string token1, string token2) {
             return new Position(Int32.Parse(token1), Int32.Parse(token2));
+        }
+    }
+
+    class ActionDebug : ITurnAction
+    {
+        public bool AttemptExecute()
+        {
+            // put all debug code here
+          
+            CardProvider.GetDefaultCards().ForEach((obj) => {
+                Console.WriteLine(obj);
+                Console.WriteLine();
+            });
+
+            return false;
+        }
+    }
+
+    class ActionShow: ITurnAction 
+    {
+        Player player;
+
+        public ActionShow(Player player) {
+            this.player = player;
+        }
+
+        public bool AttemptExecute()
+        {
+            foreach (String prop in player.CardsInHand()) {
+                Console.WriteLine(prop);
+            }
+            return false;
         }
     }
 

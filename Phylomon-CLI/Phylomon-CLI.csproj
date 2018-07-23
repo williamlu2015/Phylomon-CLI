@@ -30,6 +30,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -43,22 +46,25 @@
     <Compile Include="model\Position.cs" />
     <Compile Include="model\cards\HomeCard.cs" />
     <Compile Include="model\cards\EventCard.cs" />
-    <Compile Include="model\cards\SpeciesCard.cs" />
     <Compile Include="model\cards\Card.cs" />
-    <Compile Include="model\cards\Classification.cs" />
-    <Compile Include="model\cards\Climate.cs" />
-    <Compile Include="model\cards\Diet.cs" />
-    <Compile Include="model\cards\Terrain.cs" />
-    <Compile Include="extensions\ListExtensions.cs" />
+    <Compile Include="extensions\CollectionExtensions.cs" />
     <Compile Include="extensions\StringExtensions.cs" />
+    <Compile Include="model\CardJsonConverters.cs" />
+    <Compile Include="model\data\SpeciesCards.cs" />
+    <Compile Include="providers\CardProvider.cs" />
+    <Compile Include="model\cards\SpeciesCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="controllers\" />
     <Folder Include="controllers\models\" />
     <Folder Include="model\" />
     <Folder Include="model\cards\" />
-    <Folder Include="model\cards\speciesCards\" />
     <Folder Include="extensions\" />
+    <Folder Include="model\data\" />
+    <Folder Include="providers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

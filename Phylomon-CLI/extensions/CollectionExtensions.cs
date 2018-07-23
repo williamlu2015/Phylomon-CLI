@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using PhylomonCLI.model.cards;
 using PhylomonCLI.model;
+using System.Text;
 namespace PhylomonCLI.extensions
 {
-    public static class ListExtensions
+    public static class CollectionExtensions
     {
         public static TValue GetValueOrDefault<TKey, TValue>
         (this IDictionary<TKey, TValue> dictionary,
@@ -40,6 +42,34 @@ namespace PhylomonCLI.extensions
             } else {
                 return values[index];
             }
+        }
+
+        public static string MakeString<T>
+        (this HashSet<T> set,
+         string seperator = ", ")
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (T property in set)
+            {
+                sb.Append(property);
+                sb.Append(seperator);
+            }
+            sb.Length = sb.Length - seperator.Length;
+            return sb.ToString();
+        }
+
+        public static string MakeString<T>
+        (this IList<T> list,
+        string seperator = ", ") 
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (T property in list)
+            {
+                sb.Append(property);
+                sb.Append(seperator);
+            }
+            sb.Length = sb.Length - seperator.Length;
+            return sb.ToString();
         }
     }
 }
